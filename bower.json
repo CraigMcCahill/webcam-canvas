@@ -1,0 +1,29 @@
+{
+  "name": "webcam-component",
+  "authors": [
+    "Craig McCahill <craig.mccahill@gmail.com>"
+  ],
+  "description": "generic webcam component that owns a filter component",
+  "main": "index.html",
+  "moduleType": [],
+  "keywords": [
+    "getusermedia",
+    "webrtc",
+    "polymer",
+    "webcomponents",
+    "composition"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.1.0"
+  }
+}

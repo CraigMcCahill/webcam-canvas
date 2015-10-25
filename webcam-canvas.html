@@ -1,0 +1,49 @@
+<link rel="import"
+      href="bower_components/polymer/polymer.html">
+
+<dom-module id="webcam-canvas">
+
+<template>
+	<video id="webcam-video"></video>
+</template>
+
+<script>
+
+Polymer({
+	is: 'webcam-canvas',
+    
+    ready: function() {
+     	
+	    navigator.mediaDevices = navigator.mediaDevices || ((navigator.mozGetUserMedia || navigator.webkitGetUserMedia) ? {
+		   getUserMedia: function(c) {
+		     return new Promise(function(y, n) {
+		       (navigator.mozGetUserMedia ||
+		        navigator.webkitGetUserMedia).call(navigator, c, y, n);
+		     });
+		   }
+		} : null);
+
+		if (!navigator.mediaDevices) {
+		  console.log('getUserMedia() not supported.');
+		  //TODO: display meaningful error in UI
+		  return;
+		}
+
+		var constraints = { audio: false, video: true };
+
+		navigator.mediaDevices.getUserMedia(constraints)
+		.then(function(stream) {
+		  // var video = document.querySelector('#webcam-video');
+		  // video.src = window.URL.createObjectURL(stream);
+		  // video.onloadedmetadata = function(e) {
+		  //   video.play();
+		  // };
+		})
+		.catch(function(err) {
+		  console.log(err.name + ': ' + err.message);
+		  //TODO: display meaningful error in UI
+		});	
+	}
+});
+
+ </script>
