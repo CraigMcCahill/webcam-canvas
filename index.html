@@ -3,8 +3,21 @@
   <head>
     <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
     <link rel="import" href="webcam-canvas.html">
+    <link rel="import" href="webcam-canvas-filter.html">
   </head>
   <body>
-    <webcam-canvas></webcam-canvas>
+    <webcam-canvas-filter></webcam-canvas-filter>
+
+    <script>
+
+    var stream;
+
+    document.querySelector('webcam-canvas').addEventListener('connected', function (e) {
+        console.log('connected!');
+        
+        stream = e.detail.videoStream;
+        //console.log(e.detail.kicked); // true
+    })
+</script>
   </body>
 </html>

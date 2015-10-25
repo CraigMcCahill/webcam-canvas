@@ -14,6 +14,8 @@ Polymer({
     
     ready: function() {
      	
+    	var component = this;
+
 	    navigator.mediaDevices = navigator.mediaDevices || ((navigator.mozGetUserMedia || navigator.webkitGetUserMedia) ? {
 		   getUserMedia: function(c) {
 		     return new Promise(function(y, n) {
@@ -33,11 +35,7 @@ Polymer({
 
 		navigator.mediaDevices.getUserMedia(constraints)
 		.then(function(stream) {
-		  // var video = document.querySelector('#webcam-video');
-		  // video.src = window.URL.createObjectURL(stream);
-		  // video.onloadedmetadata = function(e) {
-		  //   video.play();
-		  // };
+		  	component.fire('connected',{videoStream: stream});			 
 		})
 		.catch(function(err) {
 		  console.log(err.name + ': ' + err.message);
@@ -47,3 +45,5 @@ Polymer({
 });
 
  </script>
+
+ </dom-module>

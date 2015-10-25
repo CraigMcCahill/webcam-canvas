@@ -1,0 +1,27 @@
+<link rel="import"
+      href="bower_components/polymer/polymer.html">
+
+<dom-module id="webcam-canvas-filter" on-connected="onConnect">
+
+<template>
+	<canvas id="video-canvas"></canvas>
+	<webcam-canvas></webcam-canvas>
+</template>
+
+<script>
+
+Polymer({
+	is: 'webcam-canvas-filter',
+    
+    ready: function() {
+     	
+	},
+
+	onConnect : function() {
+		console.log('Parent connected');
+	}	
+});
+
+ </script>
+
+ </dom-module>
