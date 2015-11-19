@@ -4,7 +4,7 @@
 <dom-module id="webcam-canvas">
 
 <template>
-	<video id="webcam-video"></video>
+	<video controls id="webcam-video"></video>
 </template>
 
 <script>
@@ -35,7 +35,14 @@ Polymer({
 
 		navigator.mediaDevices.getUserMedia(constraints)
 		.then(function(stream) {
-		  	component.fire('connected',{videoStream: stream});			 
+		  	component.fire('connected',{videoStream: stream});
+
+		  	var video = document.querySelector('video');
+			video.src = window.URL.createObjectURL(stream);
+  			video.onloadedmetadata = function(e) {
+    			video.play();
+			};
+
 		})
 		.catch(function(err) {
 		  console.log(err.name + ': ' + err.message);
